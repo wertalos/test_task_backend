@@ -1,0 +1,134 @@
+/* Base Menu Container */
+.menu-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 5px;
+    max-width: 300px;
+    margin: 10px 0;
+}
+
+/* Menu List Styling */
+.menu-container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-container li {
+    margin: 2px 0;
+    padding: 0;
+    position: relative;
+}
+
+/* Submenu Indentation */
+.menu-container ul ul {
+    margin-left: 20px;
+    position: relative;
+    display: none; /* Hidden by default */
+}
+
+/* Show submenus when parent is expanded */
+.menu-container li.expanded > ul {
+    display: block;
+}
+
+/* Menu Item Links */
+.menu-container a {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.menu-container a:hover {
+    background-color: #e9ecef;
+}
+
+/* Active and Current States */
+.menu-container .active > a {
+    background-color: #e2e6ea;
+    font-weight: 500;
+}
+
+.menu-container .current > a {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Submenu Indicator */
+.submenu-indicator {
+    margin-left: auto;
+    width: 16px;
+    height: 16px;
+    position: relative;
+}
+
+.has-submenu > a .submenu-indicator::before {
+    content: '';
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-60%) rotate(45deg);
+    transition: transform 0.2s ease;
+}
+
+.has-submenu.expanded > a .submenu-indicator::before {
+    transform: translateY(-40%) rotate(-135deg);
+}
+
+/* Tree Lines */
+.menu-container ul ul::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 0;
+    bottom: 12px;
+    width: 2px;
+    background: #dee2e6;
+}
+
+.menu-container ul ul li::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 16px;
+    width: 10px;
+    height: 2px;
+    background: #dee2e6;
+}
+
+/* Focus States */
+.menu-container a:focus {
+    outline: 2px solid #007bff;
+    outline-offset: -2px;
+}
+
+.menu-container a:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Animations */
+.menu-container ul ul {
+    transition: all 0.2s ease-out;
+}
+
+/* Container Layout */
+.menu-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.menu-section {
+    min-width: 0;
+}

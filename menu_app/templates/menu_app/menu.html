@@ -1,0 +1,149 @@
+{% load menu_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Welcome to Our Website</title>
+    <link rel="stylesheet" href="{% static 'menu_app/css/menu.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="site-header">
+        <nav class="menu-container" role="navigation" aria-label="Main Navigation">
+            {% draw_menu 'main_menu' %}
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to Our Platform</h1>
+        <p>Discover amazing products and services designed to make your life easier.</p>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Features Section -->
+        <section class="content-section">
+            <h2 style="text-align: center; margin-bottom: 40px;">Our Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-laptop fa-3x" style="color: #3498db; margin-bottom: 20px;"></i>
+                    <h3>Electronics</h3>
+                    <p>Explore our wide range of laptops, smartphones, and tablets.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-code fa-3x" style="color: #3498db; margin-bottom: 20px;"></i>
+                    <h3>Software</h3>
+                    <p>Find the perfect software solutions for your needs.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headphones fa-3x" style="color: #3498db; margin-bottom: 20px;"></i>
+                    <h3>Accessories</h3>
+                    <p>Complete your setup with our premium accessories.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="content-section">
+            <h2 style="text-align: center; margin-bottom: 40px;">Our Services</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-users-cog fa-3x" style="color: #3498db; margin-bottom: 20px;"></i>
+                    <h3>Consulting</h3>
+                    <p>Expert guidance to help you make the right choices.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-graduation-cap fa-3x" style="color: #3498db; margin-bottom: 20px;"></i>
+                    <h3>Training</h3>
+                    <p>Learn from industry experts and master new skills.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-life-ring fa-3x" style="color: #3498db; margin-bottom: 20px;"></i>
+                    <h3>Support</h3>
+                    <p>24/7 support to assist you with any questions.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Your Company Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuContainers = document.querySelectorAll('.menu-container');
+            
+            menuContainers.forEach(container => {
+                // Handle clicks on toggle buttons
+                container.addEventListener('click', function(e) {
+                    const button = e.target.closest('.menu-toggle');
+                    if (!button) return;
+
+                    const menuItem = button.closest('li');
+                    if (!menuItem) return;
+
+                    // Toggle the expanded state
+                    menuItem.classList.toggle('expanded');
+                    
+                    // Update aria-expanded state
+                    button.setAttribute('aria-expanded', 
+                        menuItem.classList.contains('expanded') ? 'true' : 'false'
+                    );
+                });
+
+                // Handle keyboard navigation
+                container.addEventListener('keydown', function(e) {
+                    const activeElement = document.activeElement;
+                    if (!activeElement || !activeElement.closest('.menu-container')) return;
+
+                    const menuItem = activeElement.closest('li');
+                    if (!menuItem) return;
+
+                    switch(e.key) {
+                        case 'Enter':
+                        case ' ':
+                            if (activeElement.classList.contains('menu-toggle')) {
+                                e.preventDefault();
+                                menuItem.classList.toggle('expanded');
+                                activeElement.setAttribute('aria-expanded',
+                                    menuItem.classList.contains('expanded') ? 'true' : 'false'
+                                );
+                            }
+                            break;
+                        case 'ArrowRight':
+                            e.preventDefault();
+                            if (activeElement.classList.contains('menu-toggle') && 
+                                !menuItem.classList.contains('expanded')) {
+                                menuItem.classList.add('expanded');
+                                activeElement.setAttribute('aria-expanded', 'true');
+                            }
+                            break;
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            if (activeElement.classList.contains('menu-toggle') && 
+                                menuItem.classList.contains('expanded')) {
+                                menuItem.classList.remove('expanded');
+                                activeElement.setAttribute('aria-expanded', 'false');
+                            } else {
+                                const parentItem = menuItem.closest('ul').closest('li');
+                                if (parentItem) {
+                                    const parentButton = parentItem.querySelector('.menu-toggle');
+                                    if (parentButton) parentButton.focus();
+                                }
+                            }
+                            break;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
