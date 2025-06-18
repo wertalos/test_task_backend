@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/django/django.png" alt="Django Tree Menu" width="200" height="200">
+  <img src="https://repository-images.githubusercontent.com/438135750/5b3bb6c0-fd30-48b4-9821-93944be0db9e" alt="Django Tree Menu" width="100%" style="max-width: 100%;">
   
   # Django Tree Menu
   
