@@ -1,23 +1,30 @@
-![Logo of the project](https://raw.githubusercontent.com/jehna/readme-best-practices/master/sample-logo.png)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/django/django.png" alt="Django Tree Menu" width="200" height="200">
+  
+  # Django Tree Menu
+  
+  [![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
+  [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+  [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+  [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/)
+</div>
 
-# Django Tree Menu
+> A powerful and flexible Django application that implements a responsive tree menu system with unlimited nesting levels, smooth animations, and modern UI design.
 
-> A Django application that implements a tree-like menu with dynamic rendering and smooth animations.
+This project provides a complete solution for implementing hierarchical navigation menus in Django applications. It features an intuitive drag-and-drop interface for menu management, responsive design, and seamless integration with any Django project.
 
-This project implements a Django-based tree menu system that can be easily integrated into any Django project. The menu supports unlimited nesting levels, dynamic expansion/collapse functionality, and smooth animations. It's built with modern web standards and is fully responsive.
+## ✨ Features
 
-## Features
+* 🌳 Tree-like menu structure with unlimited nesting levels
+* 🎯 Dynamic expansion/collapse functionality
+* 🎨 Modern, clean UI with gradient backgrounds
+* 📱 Fully responsive design for all devices
+* ⚡ Smooth animations and transitions
+* ⌨️ Full keyboard navigation support
+* 🔍 SEO-friendly markup
+* ♿ WCAG accessibility compliant
 
-* Tree-like menu structure with unlimited nesting levels
-* Horizontal navigation bar with dropdown submenus
-* Dynamic expansion/collapse functionality
-* Smooth animations and transitions
-* Responsive design that works on all devices
-* Modern, clean UI with gradient backgrounds
-* Accessible navigation with keyboard support
-* Landing page with feature sections
-
-## Tech Stack
+## 🚀 Tech Stack
 
 * Python 3.x
 * Django (Latest stable version)
@@ -27,7 +34,7 @@ This project implements a Django-based tree menu system that can be easily integ
 * Font Awesome icons
 * SQLite database
 
-## Installing / Getting started
+## 📥 Installing / Getting started
 
 To get the project running, follow these steps:
 
@@ -55,7 +62,7 @@ python manage.py runserver
 
 Visit http://localhost:8000/menu_app/menu/ to see the menu in action.
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 test_task_backend/
@@ -80,7 +87,7 @@ test_task_backend/
     └── urls.py                  # Project URL configurations
 ```
 
-## Implementation Details
+## ⚙️ Implementation Details
 
 ### Models
 
@@ -142,14 +149,14 @@ MenuItem(
 {% draw_menu 'secondary_menu' %}  # Renders secondary navigation
 ```
 
-## Contributing
+## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
-## License
+## 📜 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Author
+## 👤 Author
 
 [@wertalos](https://github.com/wertalos)
