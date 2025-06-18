@@ -1,7 +1,9 @@
 <div align="center">
-  <img src="https://repository-images.githubusercontent.com/438135750/5b3bb6c0-fd30-48b4-9821-93944be0db9e" alt="Django Tree Menu" width="100%" style="max-width: 100%;">
-  
-  # Django Tree Menu
+  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Django Tree Menu" width="100%" style="max-width: 100%;">
+
+  <h1 style="position: relative; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-size: 4em; margin-top: -120px; margin-bottom: 80px;">
+    Django Tree Menu
+  </h1>
   
   [![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)](https://www.djangoproject.com/)
   [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
