@@ -40,12 +40,20 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+/* Root Level Menu Items */
+.site-header .menu-container > ul {
     display: flex;
     height: 100%;
 }
 
 .site-header .menu-container li {
     position: relative;
+}
+
+/* Root Level List Items */
+.site-header .menu-container > ul > li {
     height: 100%;
     display: flex;
     align-items: center;
@@ -55,7 +63,7 @@ body {
 .site-header .menu-container a,
 .site-header .menu-container .menu-toggle {
     color: #fff;
-    padding: 0 1.5rem;
+    padding: 0.8rem 1.5rem;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -65,6 +73,13 @@ body {
     font-size: 1rem;
     white-space: nowrap;
     transition: all 0.3s ease;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* Root Level Links */
+.site-header .menu-container > ul > li > a,
+.site-header .menu-container > ul > li > .menu-toggle {
     height: 100%;
 }
 
@@ -79,51 +94,102 @@ body {
     color: #3498db;
 }
 
-/* Submenu handling */
+/* Base submenu styles */
 .site-header .menu-container .submenu {
-    display: none;
     position: absolute;
-    top: 100%;
-    left: 0;
     background: #2c3e50;
     min-width: 200px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    z-index: 1001;
 }
 
-.site-header .menu-container .submenu .submenu {
+/* First level submenu - drops down */
+.site-header .menu-container .menu-level-0 > li > .submenu {
+    top: 100%;
+    left: 0;
+}
+
+/* Second level submenu - appears to the right */
+.site-header .menu-container .menu-level-1 > li > .submenu {
     top: 0;
     left: 100%;
 }
 
-.site-header .menu-container li:hover > .submenu,
-.site-header .menu-container .expanded > .submenu {
-    display: block;
+/* Third level and deeper submenus - drops down */
+.site-header .menu-container .menu-level-2 > li > .submenu {
+    top: 100%;
+    left: 0;
 }
 
-/* Submenu Indicator */
-.submenu-indicator {
-    width: 20px;
-    height: 20px;
-    margin-left: 8px;
+/* Show submenu on hover */
+.site-header .menu-container li:hover > .submenu,
+.site-header .menu-container .expanded > .submenu {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+/* Submenu item styling */
+.site-header .menu-container li {
     position: relative;
 }
 
-.submenu-indicator::before {
-    content: '';
-    position: absolute;
-    right: 6px;
-    top: 50%;
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid #fff;
-    border-bottom: 2px solid #fff;
-    transform: translateY(-60%) rotate(45deg);
+.site-header .menu-container .submenu li {
+    width: 100%;
+}
+
+/* Menu toggle button and link styling */
+.site-header .menu-container a,
+.site-header .menu-container .menu-toggle {
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1rem;
+    white-space: nowrap;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* Items with subitems - add > indicator */
+.site-header .menu-container .has-submenu > .menu-toggle::after {
+    content: '>';
+    margin-left: 8px;
+    font-size: 0.9em;
+    opacity: 0.8;
+    font-weight: bold;
+    display: inline-block;
     transition: transform 0.2s ease;
 }
 
-.site-header .menu-container li:hover > .menu-toggle .submenu-indicator::before,
-.expanded > .menu-toggle .submenu-indicator::before {
-    transform: translateY(-40%) rotate(-135deg);
+/* Adjust indicator rotation for different levels */
+.site-header .menu-container .menu-level-0 > li.has-submenu > .menu-toggle::after {
+    transform: rotate(90deg);
+}
+
+.site-header .menu-container .menu-level-1 > li.has-submenu > .menu-toggle::after {
+    transform: rotate(0);
+}
+
+.site-header .menu-container .menu-level-2 > li.has-submenu > .menu-toggle::after {
+    transform: rotate(90deg);
+}
+
+/* Hover state */
+.site-header .menu-container .has-submenu:hover > .menu-toggle::after {
+    opacity: 1;
+}
+
+/* Remove the old submenu indicator since we're using > now */
+.submenu-indicator {
+    display: none;
 }
 
 /* Hero Section */

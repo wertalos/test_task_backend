@@ -66,7 +66,6 @@ def draw_menu(context, menu_name):
                 if is_active:
                     classes.append('expanded')
 
-            # Create list item
             menu_html.append(f'<li class="{" ".join(classes)}" role="presentation">')
             
             # For items with children, use a button instead of a link
@@ -78,7 +77,6 @@ def draw_menu(context, menu_name):
                     f'aria-controls="submenu-{item.id}" '
                     f'role="menuitem">'
                     f'{item.title}'
-                    f'<span class="submenu-indicator" aria-hidden="true"></span>'
                     f'</button>'
                 )
             else:
@@ -91,14 +89,15 @@ def draw_menu(context, menu_name):
 
             # Recursively add children
             if has_children:
-                menu_html.append(f'<div id="submenu-{item.id}" class="submenu">')
+                submenu_classes = ["submenu", f"submenu-level-{level}"]
+                menu_html.append(f'<ul id="submenu-{item.id}" class="{" ".join(submenu_classes)}" role="menu">')
                 menu_html.append(build_menu_level(children_dict[item.id], level + 1))
-                menu_html.append('</div>')
+                menu_html.append('</ul>')
 
             menu_html.append('</li>')
 
         menu_html.append('</ul>')
-        return ''.join(menu_html)
+        return "".join(menu_html)
 
     # Start building from root items
     return format_html(build_menu_level(root_items))
